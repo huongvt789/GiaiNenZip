@@ -4,6 +4,14 @@
         "source": "/Users/luongchung/Documents/android/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/layout/daidalos_file_item.xml"
     },
     {
+        "merged": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/layout/daidalos_file_chooser.xml",
+        "source": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/layout/daidalos_file_chooser.xml"
+    },
+    {
+        "merged": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/layout/daidalos_file_item.xml",
+        "source": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/layout/daidalos_file_item.xml"
+    },
+    {
         "merged": "/Users/luongchung/Documents/android/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/layout/daidalos_file_chooser.xml",
         "source": "/Users/luongchung/Documents/android/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/layout/daidalos_file_chooser.xml"
     }
