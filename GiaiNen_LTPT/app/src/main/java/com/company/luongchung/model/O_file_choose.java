@@ -11,6 +11,9 @@ public class O_file_choose {
     private String nameFile;
 
     public O_file_choose() {
+         choose=true;
+         urlFile="";
+         nameFile="";
     }
 
     public O_file_choose(int id, boolean choose, String urlFile, String nameFile) {

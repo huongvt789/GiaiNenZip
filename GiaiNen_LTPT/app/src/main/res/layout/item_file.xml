@@ -21,18 +21,19 @@
         android:id="@+id/txtURL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chưa có file"
-
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="0dp"
-        app:layout_constraintVertical_bias="0.518"
-        app:layout_constraintRight_toLeftOf="@+id/ll_lout"
-        android:layout_marginRight="-1dp"
-        app:layout_constraintLeft_toRightOf="@+id/radioCheck"
+
         android:layout_marginLeft="8dp"
-        app:layout_constraintHorizontal_bias="0.503" />
+        android:layout_marginRight="-1dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif"
+        android:text="Chưa có file"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toRightOf="@+id/radioCheck"
+        app:layout_constraintRight_toLeftOf="@+id/ll_lout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518" />
 
     <LinearLayout
         android:id="@+id/ll_lout"
@@ -41,17 +42,19 @@
         tools:layout_editor_absoluteY="0dp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent">
+
         <Button
             android:id="@+id/btnChon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:elevation="14dp"
-            android:textColor="#ffff"
             android:background="@drawable/custom_button1"
+            android:elevation="14dp"
+            android:fontFamily="monospace"
             android:text="Chọn"
-            android:textStyle="bold|italic"
             android:textAllCaps="false"
+            android:textColor="#ffff"
+            android:textStyle="bold|italic"
             app:layout_constraintRight_toRightOf="parent"
             tools:layout_editor_absoluteY="0dp" />
     </LinearLayout>
