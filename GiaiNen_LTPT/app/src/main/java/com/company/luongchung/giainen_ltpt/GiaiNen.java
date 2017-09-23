@@ -1,6 +1,7 @@
 package com.company.luongchung.giainen_ltpt;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,16 +16,20 @@ import com.company.luongchung.Iface.Iclick;
 import com.company.luongchung.Iface.Iupdatecheck;
 import com.company.luongchung.adapter.adapterChoose;
 import com.company.luongchung.model.O_file_choose;
+import com.dd.processbutton.iml.ActionProcessButton;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.com.daidalos.afiledialog.FileChooserActivity;
+import dmax.dialog.SpotsDialog;
 import ir.mahdi.mzip.zip.ZipArchive;
 
 public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
     private String urlOpen = Environment.getExternalStorageDirectory()+"/Download";
-    private Button btnThemFiles,btnGN,btnOpen;
+    private Button btnThemFiles,btnOpen;
+    private Button btnGN;
     private adapterChoose adapter;
     private EditText txtPass;
     private ArrayList<O_file_choose>  arrFile;
@@ -32,6 +37,7 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
     private int Postision=0;
     private int countt=0;
     final int[] Counting = {0};
+    AlertDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +80,7 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
                 countt++;
             }
         }
+        if (countt>0)dialog.show();
         for (int i=0 ;i<arrFile.size();i++)
         {
             if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
@@ -84,15 +91,18 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
                 Thread thread =new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d("GJHDGJ", "băt đau thread" + dem);
                         ZipArchive zipArchive = new ZipArchive();
                         zipArchive.unzip(arrFile.get(dem).getUrlFile(),urlOpen+"/"+namecut,PassGN);
                         Counting[0]++;
-                        Log.d("GJHDGJ", "kết thúc thread" + dem);
-                        Log.d("GJHDGJ", "Counting: "+Counting[0] + "   Count: "+countt);
                         if (countt==Counting[0])
                         {
-                            Log.d("GJHDGJ","xong");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dialog.dismiss();
+                                    btnGN.setText("Giải nén xong ✓");
+                                }
+                            });
                         }
                     }
                 });
@@ -106,6 +116,8 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
         btnGN = (Button) findViewById(R.id.btn_GN);
         btnOpen=(Button) findViewById(R.id.btn_Openfodel);
         txtPass= (EditText) findViewById(R.id.txtPass);
+        dialog = new SpotsDialog(GiaiNen.this,R.style.Custom);
+        dialog.setCanceledOnTouchOutside(false);
     }
 
     private void setlistview() {
@@ -151,11 +163,26 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             }
             String s=filePath;
             s=s.substring(s.lastIndexOf("/")+1,s.length());
-            arrFile.get(Postision).setNameFile(s);
-            arrFile.get(Postision).setUrlFile(filePath);
-            Toast.makeText(GiaiNen.this, filePath, Toast.LENGTH_LONG).show();
+            boolean kt =true;
+            for (int j=0;j<arrFile.size();j++)
+            {
+                if (filePath.equals(arrFile.get(j).getUrlFile()))
+                {
+                    kt=false;
+                }
+            }
+            if (kt)
+            {
+                arrFile.get(Postision).setNameFile(s);
+                arrFile.get(Postision).setUrlFile(filePath);
+            }
+            else
+            {
+                Toast.makeText(GiaiNen.this,"[ERROR][GIAINEN] Tệp này đã được chọn or trùng tên. ", Toast.LENGTH_LONG).show();
+            }
             adapter.notifyDataSetChanged();
         }
+        btnGN.setText("Giải nén");
     }
 
     @Override
