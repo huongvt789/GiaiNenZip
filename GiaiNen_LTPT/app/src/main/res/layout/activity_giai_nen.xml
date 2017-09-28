@@ -26,7 +26,7 @@
                 android:textColor="@color/colorPrimary"
                 android:fontFamily="monospace"
                 android:textSize="16dp"
-                android:text="CHỌN FILEs CẦN GIẢI NÉN: (.ZIP .RAR) "
+                android:text="CHỌN FILEs CẦN GIẢI NÉN: (.ZIP) "
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
             <ListView

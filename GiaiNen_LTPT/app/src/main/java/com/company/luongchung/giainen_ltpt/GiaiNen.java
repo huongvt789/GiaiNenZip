@@ -1,9 +1,14 @@
 package com.company.luongchung.giainen_ltpt;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +42,8 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
     private int Postision=0;
     private int countt=0;
     final int[] Counting = {0};
-    AlertDialog dialog;
+    private AlertDialog dialog;
+    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,14 +64,23 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
         btnGN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GiaiNenFile();
+                if(!btnGN.getText().toString().equals("Giải nén xong ✓"))
+                {
+                    GiaiNenFile();
+                }
+                else {
+                    Toast.makeText(GiaiNen.this,"Tùy chọn này đã được giải nén trước đó. /n mời bạn chọn tùy chọn khác rồi giải nén.",Toast.LENGTH_LONG).show();
+                }
             }
         });
         btnOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GiaiNen.this, FileChooserActivity.class);
-                startActivity(intent);
+                if (checkAndRequestPermissions())
+                {
+                    Intent intent = new Intent(GiaiNen.this, FileChooserActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -81,6 +96,7 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             }
         }
         if (countt>0)dialog.show();
+        if (arrFile.size()==0) Toast.makeText(GiaiNen.this,"Không có file nào được chọn \n mời bạn chọn file để giải nén.",Toast.LENGTH_LONG).show();
         for (int i=0 ;i<arrFile.size();i++)
         {
             if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
@@ -110,7 +126,6 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             }
         }
     }
-
     private void addControls() {
         btnThemFiles = (Button) findViewById(R.id.btnThemRadio);
         btnGN = (Button) findViewById(R.id.btn_GN);
@@ -189,4 +204,17 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
     public void getid(int i) {
         Postision =i;
     }
+    private  boolean checkAndRequestPermissions() {
+        int permissionCamera = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        if (permissionCamera != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(GiaiNen.this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+        return true;
+    }
+
 }
