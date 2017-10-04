@@ -125,6 +125,9 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
                                             btnNF.setTag("1");
                                         }
                                     });
+                                    File filevd =new File("/storage/emulated/0/GiainenFile/"+ten_file);
+                                    XoaThuMuc(filevd);
+
                                 }
                             });
                             thread1.start();
@@ -285,5 +288,17 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
                 destination.close();
             }
         }
+    }
+
+
+    private void XoaThuMuc(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory())
+            for (File child : fileOrDirectory.listFiles())
+            {
+                child.delete();
+                XoaThuMuc(child);
+            }
+
+        fileOrDirectory.delete();
     }
 }
