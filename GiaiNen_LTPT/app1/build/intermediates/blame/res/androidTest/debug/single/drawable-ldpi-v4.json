@@ -4,16 +4,48 @@
         "source": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/document_gray.png"
     },
     {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/document_gray.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/document_gray.png"
+    },
+    {
         "merged": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/no.png",
         "source": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/no.png"
+    },
+    {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/folder_gray.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/folder_gray.png"
+    },
+    {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/no.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/no.png"
+    },
+    {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/document.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/document.png"
+    },
+    {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/tick.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/tick.png"
     },
     {
         "merged": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/folder_gray.png",
         "source": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/folder_gray.png"
     },
     {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/add.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/add.png"
+    },
+    {
         "merged": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/add.png",
         "source": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/add.png"
+    },
+    {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/folder.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/folder.png"
+    },
+    {
+        "merged": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/ic_launcher.png",
+        "source": "/Users/luongchung/Downloads/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/bundles/debug/res/drawable-ldpi-v4/ic_launcher.png"
     },
     {
         "merged": "/Users/luongchung/Documents/android/GiaiNenZip/GiaiNen_LTPT/app1/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/document.png",

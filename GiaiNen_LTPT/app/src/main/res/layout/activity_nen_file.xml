@@ -46,13 +46,13 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtPassNen"
+                android:id="@+id/txtTenfilenen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
                 android:fontFamily="monospace"
-                android:hint="Mời nhập mật khẩu "
+                android:hint="Mời nhập tên file"
                 android:textStyle="bold" />
             <Button
                 android:id="@+id/btn_NF"

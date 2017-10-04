@@ -36,7 +36,7 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
     private Button btnThemFiles,btnOpen;
     private Button btnGN;
     private adapterChoose adapter;
-    private EditText txtPass;
+
     private ArrayList<O_file_choose>  arrFile;
     private ListView listView;
     private int Postision=0;
@@ -102,13 +102,12 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
             {
                 final int dem=i;
-                final String PassGN =txtPass.getText().toString();
                 final String namecut=arrFile.get(i).getNameFile().substring(0,arrFile.get(i).getNameFile().lastIndexOf("."));
                 Thread thread =new Thread(new Runnable() {
                     @Override
                     public void run() {
                         ZipArchive zipArchive = new ZipArchive();
-                        zipArchive.unzip(arrFile.get(dem).getUrlFile(),urlOpen+"/"+namecut,PassGN);
+                        zipArchive.unzip(arrFile.get(dem).getUrlFile(),urlOpen+"/"+namecut,"");
                         Counting[0]++;
                         if (countt==Counting[0])
                         {
@@ -130,7 +129,6 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
         btnThemFiles = (Button) findViewById(R.id.btnThemRadio);
         btnGN = (Button) findViewById(R.id.btn_GN);
         btnOpen=(Button) findViewById(R.id.btn_Openfodel);
-        txtPass= (EditText) findViewById(R.id.txtPass);
         dialog = new SpotsDialog(GiaiNen.this,R.style.Custom);
         dialog.setCanceledOnTouchOutside(false);
     }

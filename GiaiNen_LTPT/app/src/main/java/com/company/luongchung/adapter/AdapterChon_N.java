@@ -82,7 +82,6 @@ public class AdapterChon_N extends ArrayAdapter<O_file_choose> {
                 if(checkAndRequestPermissions()) {
                     iclick.getid(position);
                     Intent intent = new Intent(getContext(), FileChooserActivity.class);
-                    intent.putExtra(FileChooserActivity.INPUT_REGEX_FILTER, ".*jpg|.*rar");
                     // lọc đuôi
                     intent.putExtra(FileChooserActivity.INPUT_START_FOLDER, Environment.getExternalStorageDirectory());
                     // chọn đường dẫn files
