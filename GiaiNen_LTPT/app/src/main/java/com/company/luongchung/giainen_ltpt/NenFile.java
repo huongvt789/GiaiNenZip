@@ -74,7 +74,7 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
         btnNF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!btnNF.getTag().equals("1"))
+                if(btnNF.getText().toString().equals("NÉN FILE"))
                 {
                     nenFile();
                 }
@@ -95,52 +95,56 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
                 countt++;
             }
         }
-        if(!checknull()) Toast.makeText(NenFile.this,"Bạn chưa chọn file nào để nén \n Mời chọn các file để nén.",Toast.LENGTH_LONG).show();
         if (countt>0)dialog.show();
-
-        final String ten_file=txtTenFileNen.getText().toString();
-        for (int i=0 ;i<arrFile.size();i++)
+        if(!checknull()) Toast.makeText(NenFile.this,"Bạn chưa chọn file nào để nén \n Mời chọn các file để nén.",Toast.LENGTH_LONG).show();
+        else
         {
-            if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
+            final String ten_file=txtTenFileNen.getText().toString();
+            for (int i=0 ;i<arrFile.size();i++)
             {
-                final int dem=i;
-                Thread thread =new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        copyFileOrDirectory(arrFile.get(dem).getUrlFile(),"/storage/emulated/0/GiainenFile/"+ten_file);
-                        Counting[0]++;
-                        if (countt==Counting[0])
-                        {
-                            Thread thread1 =new Thread(new Runnable() {
-                                @Override
-                                public void run() {
+                if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
+                {
+                    final int dem=i;
+                    Thread thread =new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            copyFileOrDirectory(arrFile.get(dem).getUrlFile(),"/storage/emulated/0/GiainenFile/"+ten_file);
+                            Counting[0]++;
+                            if (countt==Counting[0])
+                            {
+                                Thread thread1 =new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
 
-                                    ZipArchive zipArchive = new ZipArchive();
-                                    zipArchive.zip("/storage/emulated/0/GiainenFile/"+ten_file,"/storage/emulated/0/GiainenFile/"+ten_file+".zip",""); //Nén file
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            dialog.dismiss();
-                                            btnNF.setText("Nén xong ✓");
-                                            btnNF.setTag("1");
-                                        }
-                                    });
-                                    File filevd =new File("/storage/emulated/0/GiainenFile/"+ten_file);
-                                    XoaThuMuc(filevd);
+                                        ZipArchive zipArchive = new ZipArchive();
+                                        zipArchive.zip("/storage/emulated/0/GiainenFile/"+ten_file,"/storage/emulated/0/GiainenFile/"+ten_file+".zip",""); //Nén file
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                dialog.dismiss();
+                                                btnNF.setText("Nén xong ✓");
+                                            }
+                                        });
+                                        File filevd =new File("/storage/emulated/0/GiainenFile/"+ten_file);
+                                        XoaThuMuc(filevd);
 
-                                }
-                            });
-                            thread1.start();
+                                    }
+                                });
+                                thread1.start();
 
+                            }
                         }
-                    }
-                });
-                thread.start();
+                    });
+                    thread.start();
+                }
             }
         }
+
+
     }
 
     private boolean checknull() {
+        boolean kt =false;
         for (int i=0;i<arrFile.size();i++)
         {
             if (!arrFile.get(i).getUrlFile().equals(""))
@@ -148,7 +152,7 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
                 return true;
             }
         }
-        return false;
+        return kt;
     }
 
     private void setlistview() {
@@ -219,12 +223,11 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
             }
             else
             {
-                Toast.makeText(NenFile.this,"[ERROR][NENFILE] \n Tệp này đã được chọn or trùng tên.", Toast.LENGTH_LONG).show();
+                Toast.makeText(NenFile.this,"Tệp này đã được chọn or trùng tên.", Toast.LENGTH_LONG).show();
             }
             adapter.notifyDataSetChanged();
         }
         btnNF.setText("NÉN FILE");
-        btnNF.setTag("0");
 
     }
 

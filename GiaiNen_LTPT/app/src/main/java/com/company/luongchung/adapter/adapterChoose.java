@@ -68,7 +68,13 @@ public class adapterChoose extends ArrayAdapter<O_file_choose> {
 
 
         if(!file_choose.getNameFile().isEmpty())
-        textView.setText(file_choose.getNameFile());
+        {
+            String ten=file_choose.getNameFile();
+            if(ten.length()>17)
+            ten =ten.substring(ten.length()-17,ten.length());
+
+            textView.setText("..."+ten);
+        }
         else textView.setText("Chưa được chọn");
 
 
@@ -76,11 +82,11 @@ public class adapterChoose extends ArrayAdapter<O_file_choose> {
 
         if (file_choose.isChoose()) {
             radioChon.setChecked(true);
-            radioChon.setText(position+"");
+            radioChon.setText((position+1)+"");
         }
         else {
             radioChon.setChecked(false);
-            radioChon.setText(position+"");
+            radioChon.setText((position+1)+"");
         }
         btnChon.setOnClickListener(new View.OnClickListener() {
             @Override

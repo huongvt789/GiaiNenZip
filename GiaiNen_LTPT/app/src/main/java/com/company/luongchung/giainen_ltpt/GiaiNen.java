@@ -96,34 +96,51 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             }
         }
         if (countt>0)dialog.show();
-        if (arrFile.size()==0) Toast.makeText(GiaiNen.this,"Không có file nào được chọn \n mời bạn chọn file để giải nén.",Toast.LENGTH_LONG).show();
-        for (int i=0 ;i<arrFile.size();i++)
+
+        if (!checknull(arrFile)) Toast.makeText(GiaiNen.this,"Không có file nào được chọn \n mời bạn chọn file để giải nén.",Toast.LENGTH_LONG).show();
+        else
         {
-            if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
+            for (int i=0 ;i<arrFile.size();i++)
             {
-                final int dem=i;
-                final String namecut=arrFile.get(i).getNameFile().substring(0,arrFile.get(i).getNameFile().lastIndexOf("."));
-                Thread thread =new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ZipArchive zipArchive = new ZipArchive();
-                        zipArchive.unzip(arrFile.get(dem).getUrlFile(),urlOpen+"/"+namecut,"");
-                        Counting[0]++;
-                        if (countt==Counting[0])
-                        {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    dialog.dismiss();
-                                    btnGN.setText("Giải nén xong ✓");
-                                }
-                            });
+                if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
+                {
+                    final int dem=i;
+                    final String namecut=arrFile.get(i).getNameFile().substring(0,arrFile.get(i).getNameFile().lastIndexOf("."));
+                    Thread thread =new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ZipArchive zipArchive = new ZipArchive();
+                            zipArchive.unzip(arrFile.get(dem).getUrlFile(),urlOpen+"/"+namecut,"");
+                            Counting[0]++;
+                            if (countt==Counting[0])
+                            {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        dialog.dismiss();
+                                        btnGN.setText("Giải nén xong ✓");
+                                    }
+                                });
+                            }
                         }
-                    }
-                });
-                thread.start();
+                    });
+                    thread.start();
+                }
             }
         }
+
+    }
+    private boolean checknull(ArrayList<O_file_choose> arr)
+    {
+        boolean kt= false;
+        for(int i=0;i<arr.size();i++)
+        {
+            if(!arr.get(i).getUrlFile().equals(""))
+            {
+                return true;
+            }
+        }
+        return kt;
     }
     private void addControls() {
         btnThemFiles = (Button) findViewById(R.id.btnThemRadio);
@@ -191,7 +208,7 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             }
             else
             {
-                Toast.makeText(GiaiNen.this,"[ERROR][GIAINEN] Tệp này đã được chọn or trùng tên. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(GiaiNen.this,"Tệp này đã được chọn or trùng tên. ", Toast.LENGTH_LONG).show();
             }
             adapter.notifyDataSetChanged();
         }
