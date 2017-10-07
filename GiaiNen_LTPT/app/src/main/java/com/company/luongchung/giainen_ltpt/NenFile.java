@@ -76,7 +76,19 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
             public void onClick(View view) {
                 if(btnNF.getText().toString().equals("NÉN FILE"))
                 {
-                    nenFile();
+                    if(txtTenFileNen.getText().toString().equals(""))
+                    {
+                        Toast.makeText(NenFile.this,"Mời nhập tên file khi nén xong.",Toast.LENGTH_LONG).show();
+                        txtTenFileNen.requestFocus();
+                    }
+                    else
+                    {
+                        if (txtTenFileNen.getText().toString().length()>30)
+                        {
+                            Toast.makeText(NenFile.this,"Tên có kích thước quá dài. \n mời nhập lại tên nhỏ hơn 30 ký tự",Toast.LENGTH_LONG).show();
+                        }else
+                        nenFile();
+                    }
                 }
                 else {
                     Toast.makeText(NenFile.this,"Tùy chọn này đã được nén trước đó. \n mời bạn chọn tùy chọn khác rồi nén lại file.",Toast.LENGTH_LONG).show();
@@ -123,6 +135,10 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
                                             public void run() {
                                                 dialog.dismiss();
                                                 btnNF.setText("Nén xong ✓");
+                                                txtTenFileNen.setText("");
+                                                txtTenFileNen.clearFocus();
+                                                btnNF.setBackgroundResource(R.drawable.custom_button_thanhcong);
+                                                btnNF.setTextColor(getResources().getColor(R.color.trang));
                                             }
                                         });
                                         File filevd =new File("/storage/emulated/0/GiainenFile/"+ten_file);
@@ -167,7 +183,6 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
         btnThem = (Button) findViewById(R.id.btnThemRadioNen);
         btn_Openfodel_N = (Button) findViewById(R.id.btn_Openfodel_N);
         txtTenFileNen= (EditText) findViewById(R.id.txtTenfilenen);
-        txtTenFileNen.setText("filenen");
         dialog = new SpotsDialog(NenFile.this,R.style.Custom);
         dialog.setCanceledOnTouchOutside(false);
         setlistview();
@@ -227,6 +242,8 @@ public class NenFile extends AppCompatActivity implements Iclick,Iupdatecheck {
             }
             adapter.notifyDataSetChanged();
         }
+        btnNF.setBackgroundResource(R.drawable.custom_button);
+        btnNF.setTextColor(getResources().getColor(R.color.colorPrimary));
         btnNF.setText("NÉN FILE");
 
     }

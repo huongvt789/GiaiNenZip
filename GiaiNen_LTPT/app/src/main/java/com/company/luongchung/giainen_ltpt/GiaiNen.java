@@ -119,6 +119,8 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
                                     public void run() {
                                         dialog.dismiss();
                                         btnGN.setText("Giải nén xong ✓");
+                                        btnGN.setBackgroundResource(R.drawable.custom_button_thanhcong);
+                                        btnGN.setTextColor(getResources().getColor(R.color.trang));
                                     }
                                 });
                             }
@@ -213,6 +215,8 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             adapter.notifyDataSetChanged();
         }
         btnGN.setText("Giải nén");
+        btnGN.setBackgroundResource(R.drawable.custom_button);
+        btnGN.setTextColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override

@@ -52,7 +52,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext"
                 android:fontFamily="monospace"
-                android:hint="Mời nhập tên file"
+                android:hint="Mời nhập tên file khi nén"
                 android:textStyle="bold" />
             <Button
                 android:id="@+id/btn_NF"
