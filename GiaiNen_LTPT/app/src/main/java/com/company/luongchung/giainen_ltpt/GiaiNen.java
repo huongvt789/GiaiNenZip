@@ -88,6 +88,7 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
     private void GiaiNenFile() {
         Counting[0]=0;
         countt=0;
+        //đếm số file đã chọn
         for (int i=0 ;i<arrFile.size();i++)
         {
             if(arrFile.get(i).isChoose() && !arrFile.get(i).getUrlFile().isEmpty())
@@ -234,6 +235,6 @@ public class GiaiNen extends AppCompatActivity implements Iupdatecheck,Iclick{
             return false;
         }
         return true;
-    }
+    }//hỏi quyền truy xuất file
 
 }
